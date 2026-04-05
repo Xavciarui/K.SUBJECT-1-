@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.Subject-1- — Curated Collections</title>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.Subject-1- — Curated Collections</title>
+    <!-- Custom Tab Icon (Favicon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2308080d'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='45' fill='%23e8a630'%3EKC%3C/text%3E%3C/svg%3E">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ... rest of your head code ... -->
+</head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200..900;1,9..40,200..900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#08080d',
+                        surface: '#0e0e15',
+                        card: '#13131c',
+                        cardHover: '#1a1a26',
+                        accent: '#e8a630',
+                        accentDim: '#c48a20',
+                        coral: '#e07a5f',
+                        sage: '#81b29a',
+                        muted: '#6b6880',
+                        softWhite: '#ede8e0',
+                        subtle: '#9b97a8',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', system-ui, sans-serif; background: #08080d; color: #ede8e0; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0e0e15; }
+        ::-webkit-scrollbar-thumb { background: #2a2a38; border-radius: 3px; }
+
+        .atmo-bg {
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 10% 5%, rgba(232,166,48,0.07), transparent),
+                radial-gradient(ellipse 500px 500px at 90% 15%, rgba(224,122,95,0.05), transparent),
+                radial-gradient(ellipse 600px 400px at 50% 80%, rgba(129,178,154,0.035), transparent);
+        }
+        .noise::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+        .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+        .orb-1 { width: 350px; height: 350px; background: rgba(232,166,48,0.06); top: -80px; left: -100px; animation: orbDrift 22s ease-in-out infinite; }
+        .orb-2 { width: 280px; height: 280px; background: rgba(224,122,95,0.05); bottom: 5%; right: -80px; animation: orbDrift 28s ease-in-out infinite reverse; }
+        .orb-3 { width: 220px; height: 220px; background: rgba(129,178,154,0.04); top: 55%; left: 35%; animation: orbDrift 32s ease-in-out infinite; animation-delay: -10s; }
+        @keyframes orbDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(40px, -30px) scale(1.08); }
+            50% { transform: translate(-20px, 20px) scale(0.94); }
+            75% { transform: translate(25px, 10px) scale(1.04); }
+        }
+
+        .card-shine { position: relative; overflow: hidden; }
+        .card-shine::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(232,166,48,0.05), transparent 50%);
+            opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 2;
+        }
+        .card-shine:hover::before { opacity: 1; }
+
+        .glow-ring { box-shadow: 0 0 0 1px rgba(232,166,48,0.08), 0 0 60px -10px rgba(232,166,48,0.12), 0 20px 60px -15px rgba(0,0,0,0.5); }
+        .glow-ring:hover { box-shadow: 0 0 0 1px rgba(232,166,48,0.15), 0 0 80px -5px rgba(232,166,48,0.18), 0 25px 80px -15px rgba(0,0,0,0.6); }
+
+        .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+        .feature-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .feature-card:hover { transform: translateY(-4px); border-color: rgba(232,166,48,0.15); }
+        .feature-card:hover .feature-icon { background: rgba(232,166,48,0.15); color: #e8a630; }
+
+        .marquee-track { display: flex; width: max-content; animation: marqueeScroll 30s linear infinite; }
+        @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .pulse-dot { position: relative; }
+        .pulse-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: rgba(232,166,48,0.3); animation: pulseDot 2s ease-in-out infinite; }
+        @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.8); opacity: 0; } }
+
+        .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(5px); }
+        .cart-overlay.open { opacity: 1; pointer-events: all; }
+        .cart-panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 90vw); background: #0e0e15; border-left: 1px solid rgba(255,255,255,0.05); z-index: 101; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .cart-panel.open { transform: translateX(0); }
+
+        .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+        .toast { padding: 14px 20px; border-radius: 14px; background: #1a1a26; border: 1px solid rgba(255,255,255,0.06); color: #ede8e0; font-size: 14px; transform: translateX(120%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+        .toast.show { transform: translateX(0); }
+
+        .qty-btn { width: 30px; height: 30px; border-radius: 9px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); color: #ede8e0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 12px; }
+        .qty-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14); }
+
+        #particlesCanvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .img-zoom { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+        .img-zoom:hover { transform: scale(1.06); }
+        .accent-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(232,166,48,0.2), rgba(224,122,95,0.1), transparent); }
+        .spec-fill { transition: width 1.2s cubic-bezier(0.4,0,0.2,1); width: 0; }
+
+        .nav-link { position: relative; padding: 6px 0; transition: color 0.25s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #e8a630; border-radius: 1px; transition: width 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link:hover, .nav-link.active { color: #e8a630; }
+
+        .cat-pill { transition: all 0.25s ease; cursor: pointer; }
+        .cat-pill.active { background: #e8a630; color: #08080d; border-color: #e8a630; font-weight: 600; }
+
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        .product-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .product-card:hover { transform: translateY(-3px); border-color: rgba(232,166,48,0.12); }
+
+        .search-wrap { position: relative; }
+        .search-wrap input { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.06); }
+        .search-wrap input:focus { border-color: rgba(232,166,48,0.3); box-shadow: 0 0 0 3px rgba(232,166,48,0.06); }
+        .search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 40; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: #111118; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(-8px); transition: all 0.25s ease; }
+        .search-results.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+        .cat-link { transition: all 0.3s ease; }
+        .cat-link:hover { transform: translateY(-2px); border-color: rgba(232,166,48,0.15); }
+        .cat-link:hover .cat-link-icon { background: rgba(232,166,48,0.12); color: #e8a630; }
+
+        /* ─── Hero floating images ─── */
+        .hero-float-img {
+            position: absolute;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px -10px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+            transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), box-shadow 0.6s ease;
+        }
+        .hero-float-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+        }
+        .hero-float-img:hover img { transform: scale(1.08); }
+        .hero-float-img:hover { box-shadow: 0 30px 80px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(232,166,48,0.1), 0 0 40px -5px rgba(232,166,48,0.08); }
+
+        .float-1 {
+            width: 260px; height: 320px; top: 5%; right: 8%;
+            transform: rotate(-6deg);
+            animation: floatA 8s ease-in-out infinite;
+            z-index: 3;
+        }
+        .float-2 {
+            width: 200px; height: 250px; top: 30%; right: 2%;
+            transform: rotate(4deg);
+            animation: floatB 10s ease-in-out infinite;
+            z-index: 2;
+            clip-path: polygon(8% 0%, 100% 0%, 100% 92%, 0% 100%);
+        }
+        .float-3 {
+            width: 160px; height: 200px; bottom: 5%; right: 30%;
+            transform: rotate(-10deg);
+            animation: floatC 9s ease-in-out infinite;
+            z-index: 1;
+            clip-path: polygon(0% 8%, 92% 0%, 100% 100%, 8% 100%);
+        }
+        .float-badge {
+            position: absolute; z-index: 5;
+            animation: floatBadge 6s ease-in-out infinite;
+        }
+        @keyframes floatA {
+            0%, 100% { transform: rotate(-6deg) translateY(0px); }
+            50% { transform: rotate(-4deg) translateY(-14px); }
+        }
+        @keyframes floatB {
+            0%, 100% { transform: rotate(4deg) translateY(0px); }
+            50% { transform: rotate(6deg) translateY(-18px); }
+        }
+        @keyframes floatC {
+            0%, 100% { transform: rotate(-10deg) translateY(0px); }
+            50% { transform: rotate(-8deg) translateY(-12px); }
+        }
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-10px) rotate(0deg); }
+        }
+
+        /* ─── Spotlight section ─── */
+        .spotlight-img {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px -15px rgba(0,0,0,0.5);
+            transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+        .spotlight-img:hover { transform: rotate(0deg) scale(1.02) !important; }
+
+        /* ─── Decorative shapes ─── */
+        .deco-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(232,166,48,0.08);
+            pointer-events: none;
+            animation: decoRingSpin 40s linear infinite;
+        }
+        @keyframes decoRingSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .deco-cross {
+            position: absolute;
+            width: 20px; height: 20px;
+            pointer-events: none;
+        }
+        .deco-cross::before, .deco-cross::after {
+            content: ''; position: absolute; background: rgba(232,166,48,0.15); border-radius: 1px;
+        }
+        .deco-cross::before { width: 1px; height: 100%; left: 50%; top: 0; }
+        .deco-cross::after { height: 1px; width: 100%; top: 50%; left: 0; }
+
+        /* ─── Slide in from sides ─── */
+        .slide-in-left { opacity: 0; transform: translateX(-60px) rotate(-2deg); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+        .slide-in-left.visible { opacity: 1; transform: translateX(0) rotate(-2deg); }
+        .slide-in-right { opacity: 0; transform: translateX(60px) rotate(2deg); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+        .slide-in-right.visible { opacity: 1; transform: translateX(0) rotate(2deg); }
+        .slide-in-up { opacity: 0; transform: translateY(50px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .slide-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── Glow line ─── */
+        .glow-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e8a630, #e07a5f, transparent);
+            animation: glowLinePulse 3s ease-in-out infinite;
+        }
+        @keyframes glowLinePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            .float-1 { width: 160px; height: 200px; top: 2%; right: 2%; }
+            .float-2 { width: 120px; height: 150px; top: 28%; right: -2%; }
+            .float-3 { width: 100px; height: 130px; bottom: 2%; right: 15%; }
+        }
+        @media (max-width: 480px) {
+            .float-2, .float-3 { display: none; }
+            .float-1 { width: 130px; height: 170px; right: 0; top: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body class="noise">
+    <canvas id="particlesCanvas"></canvas>
+    <div class="atmo-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Cart -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-panel" id="cartPanel" role="dialog" aria-label="Shopping cart">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b border-white/5">
+                <div><h3 class="text-lg font-semibold font-display">Your Cart</h3><p class="text-sm text-muted mt-0.5" id="cartCount">0 items</p></div>
+                <button onclick="toggleCart()" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition" aria-label="Close cart"><i class="fa-solid fa-xmark text-subtle"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6" id="cartItems">
+                <div class="flex flex-col items-center justify-center h-full text-center"><div class="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-4"><i class="fa-solid fa-bag-shopping text-2xl text-muted"></i></div><p class="text-subtle font-medium">Your cart is empty</p><p class="text-sm text-muted mt-1">Browse and add items you love</p></div>
+            </div>
+            <div class="p-6 border-t border-white/5" id="cartFooter" style="display:none;">
+                <div class="flex justify-between mb-2"><span class="text-subtle">Subtotal</span><span class="font-semibold" id="cartSubtotal">0 MMK</span></div>
+                <div class="flex justify-between mb-4 text-sm"><span class="text-muted">Delivery</span><span class="text-sage">Calculated at checkout</span></div>
+                <button class="w-full rounded-2xl bg-accent py-3.5 font-semibold text-bg hover:bg-accentDim transition" onclick="showToast('Checkout coming soon!', 'info')">Proceed to checkout</button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="relative z-10">
+        <!-- HEADER -->
+        <header class="sticky top-0 z-50 backdrop-blur-2xl bg-bg/70 border-b border-white/[0.03]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 sm:h-[72px] gap-4">
+                    <a href="#" onclick="navigateTo('home');return false;" class="flex items-center gap-2.5 shrink-0">
+                        <div class="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center border border-accent/10"><span class="text-accent font-display font-bold text-lg">KC</span></div>
+                        <div class="hidden sm:block"><span class="font-display font-semibold text-lg leading-none">K.Subject-1-</span><p class="text-[10px] text-muted tracking-wider uppercase mt-0.5">Curated Collections</p></div>
+                    </a>
+                    <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
+                        <button onclick="navigateTo('home')" class="nav-link active text-sm font-medium text-subtle" data-nav="home">Home</button>
+                        <button onclick="navigateTo('collection')" class="nav-link text-sm font-medium text-subtle" data-nav="collection">Collection</button>
+                        <button onclick="navigateTo('library')" class="nav-link text-sm font-medium text-subtle" data-nav="library">Library</button>
+                    </nav>
+                    <div class="flex items-center gap-2">
+                        <div class="search-wrap hidden sm:block">
+                            <div class="flex items-center gap-2 rounded-xl bg-surface/80 border border-white/[0.06] px-3.5 py-2"><i class="fa-solid fa-magnifying-glass text-muted text-xs"></i><input type="text" id="headerSearch" placeholder="Search..." class="bg-transparent w-36 lg:w-44 text-sm text-softWhite placeholder-muted outline-none" oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" onblur="setTimeout(()=>closeSearchResults(),200)"></div>
+                            <div class="search-results" id="headerSearchResults"></div>
+                        </div>
+                        <div class="relative sm:hidden">
+                            <button onclick="toggleMobileNav()" class="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06] transition" aria-label="Menu"><i class="fa-solid fa-bars text-subtle text-sm"></i></button>
+                            <div id="mobileNav" class="absolute right-0 top-full mt-2 w-56 rounded-2xl border border-white/[0.06] bg-surface/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden opacity-0 pointer-events-none translate-y-2 transition-all duration-200" style="z-index:60;">
+                                <div class="px-4 pt-3 pb-2"><div class="flex items-center gap-2 rounded-lg bg-white/[0.04] border border-white/[0.06] px-3 py-2"><i class="fa-solid fa-magnifying-glass text-muted text-xs"></i><input type="text" id="mobileSearch" placeholder="Search items..." class="bg-transparent w-full text-sm text-softWhite placeholder-muted outline-none" oninput="handleSearch(this.value)"></div></div>
+                                <div class="border-t border-white/[0.04]">
+                                    <button onclick="navigateTo('home');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-house text-xs text-muted w-4"></i> Home</button>
+                                    <button onclick="navigateTo('collection');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-grid-2 text-xs text-muted w-4"></i> Collection</button>
+                                    <button onclick="navigateTo('library');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-book-open text-xs text-muted w-4"></i> Library</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="hidden sm:flex w-10 h-10 rounded-xl bg-white/[0.03] items-center justify-center hover:bg-white/[0.06] transition" aria-label="Wishlist" onclick="showToast('Wishlist coming soon','info')"><i class="fa-regular fa-heart text-subtle text-sm"></i></button>
+                        <button onclick="toggleCart()" class="relative w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.06] transition" aria-label="Open cart"><i class="fa-solid fa-bag-shopping text-subtle text-sm"></i><span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-accent text-bg text-[10px] font-bold flex items-center justify-center" id="cartBadge" style="display:none;">0</span></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- ===================== HOME VIEW ===================== -->
+            <div id="view-home" class="view-section active">
+
+                <!-- HERO with floating images -->
+                <section class="relative pt-6 sm:pt-10 pb-16 sm:pb-24 overflow-hidden">
+                    <!-- Decorative elements -->
+                    <div class="deco-ring" style="width:300px;height:300px;top:-80px;right:-60px;"></div>
+                    <div class="deco-ring" style="width:180px;height:180px;bottom:10%;right:15%;animation-direction:reverse;animation-duration:30s;border-color:rgba(224,122,95,0.06);"></div>
+                    <div class="deco-cross" style="top:20%;right:42%;opacity:0.5;animation:floatBadge 5s ease-in-out infinite;"></div>
+                    <div class="deco-cross" style="top:60%;right:8%;opacity:0.3;animation:floatBadge 7s ease-in-out infinite reverse;"></div>
+
+                    <!-- Floating product images -->
+                    <div class="hero-float-img float-1 slide-in-right" style="transition-delay:400ms">
+                        <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Umbrella preview">
+                    </div>
+                    <div class="hero-float-img float-2 slide-in-right" style="transition-delay:600ms">
+                        <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Umbrella preview">
+                    </div>
+                    <div class="hero-float-img float-3 slide-in-right" style="transition-delay:800ms">
+                        <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Umbrella preview">
+                    </div>
+
+                    <!-- Floating price badge -->
+                    <div class="float-badge hidden lg:flex items-center gap-2.5 rounded-2xl bg-bg/90 backdrop-blur-md border border-accent/15 px-4 py-2.5 shadow-xl shadow-accent/5" style="top:12%;right:44%;">
+                        <div class="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center"><i class="fa-solid fa-tag text-accent text-xs"></i></div>
+                        <div><p class="text-[10px] text-muted">Starting from</p><p class="text-sm font-bold text-accent">20,000/- MMK</p></div>
+                    </div>
+
+                    <!-- Main hero content -->
+                    <div class="relative z-10 max-w-xl lg:max-w-2xl">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/8 px-4 py-1.5 text-xs font-medium text-accent mb-6 reveal">
+                            <i class="fa-solid fa-sparkles"></i> Curated for you
+                        </div>
+                        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-900 leading-[1.05] tracking-tight reveal" style="transition-delay:80ms">
+                            Discover Products<br>That <span class="text-accent">Match</span> Your Style
+                        </h1>
+                        <p class="mt-5 text-subtle text-base sm:text-lg leading-relaxed max-w-lg reveal" style="transition-delay:160ms">
+                            Explore handpicked items across categories. From everyday essentials to statement pieces — all in one beautifully organized marketplace.
+                        </p>
+
+                        <div class="mt-8 reveal" style="transition-delay:240ms">
+                            <div class="search-wrap">
+                                <div class="flex items-center gap-3 rounded-2xl bg-surface/90 border border-white/[0.06] px-5 py-4 shadow-lg shadow-black/20">
+                                    <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                                    <input type="text" id="heroSearch" placeholder="Search products, categories..." class="bg-transparent flex-1 text-base text-softWhite placeholder-muted outline-none" oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" onblur="setTimeout(()=>closeSearchResults(),200)" aria-label="Search products">
+                                    <kbd class="hidden sm:inline-flex items-center gap-1 rounded-lg bg-white/[0.05] border border-white/[0.06] px-2 py-0.5 text-[10px] text-muted font-mono"><span class="text-[9px]">/</span></kbd>
+                                </div>
+                                <div class="search-results" id="heroSearchResults"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-7 flex flex-wrap gap-3 reveal" style="transition-delay:320ms">
+                            <button onclick="navigateTo('collection')" class="rounded-full bg-accent px-7 py-3 font-semibold text-bg hover:bg-accentDim transition text-sm shadow-lg shadow-accent/15">Browse collection</button>
+                            <button onclick="navigateTo('library')" class="rounded-full border border-white/10 bg-white/5 px-7 py-3 font-medium hover:bg-white/10 transition text-sm text-subtle">Explore library</button>
+                        </div>
+
+                        <div class="mt-10 flex flex-wrap gap-8 reveal" style="transition-delay:400ms">
+                            <div><p class="font-display text-2xl font-bold text-softWhite">1+</p><p class="text-xs text-muted mt-0.5">Products</p></div>
+                            <div><p class="font-display text-2xl font-bold text-softWhite">5</p><p class="text-xs text-muted mt-0.5">Categories</p></div>
+                            <div><p class="font-display text-2xl font-bold text-softWhite">Daily</p><p class="text-xs text-muted mt-0.5">New drops</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="glow-line mb-12"></div>
+
+                <!-- SPOTLIGHT — Asymmetric image composition -->
+                <section class="pb-16 relative overflow-hidden">
+                    <div class="deco-cross" style="top:10%;left:5%;opacity:0.3;animation:floatBadge 8s ease-in-out infinite;"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Left angled image -->
+                        <div class="lg:col-span-5 slide-in-left" style="transition-delay:100ms">
+                            <div class="spotlight-img transform -rotate-3 hover:rotate-0" style="box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);">
+                                <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Umbrella spotlight" class="w-full aspect-[3/4] object-cover">
+                            </div>
+                        </div>
+                        <!-- Center content -->
+                        <div class="lg:col-span-4 z-10 text-center lg:text-left slide-in-up" style="transition-delay:200ms">
+                            <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent mb-2">Spotlight</p>
+                            <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">Built for<br>Real Weather</h2>
+                            <p class="mt-4 text-subtle text-sm leading-relaxed max-w-sm mx-auto lg:mx-0">Every product in our library is tested for durability, portability, and style. We don't just curate — we engineer the experience.</p>
+                            <button onclick="navigateTo('detail')" class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-bg hover:bg-accentDim transition shadow-lg shadow-accent/15">
+                                See the umbrella <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                        <!-- Right tilted image -->
+                        <div class="lg:col-span-3 slide-in-right" style="transition-delay:300ms">
+                            <div class="spotlight-img transform rotate-5 hover:rotate-0" style="clip-path: polygon(6% 0%, 100% 0%, 100% 94%, 0% 100%);box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);">
+                                <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Umbrella detail" class="w-full aspect-[3/4] object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="accent-divider mb-12"></div>
+
+                <!-- Category Quick Links -->
+                <section class="pb-12">
+                    <div class="flex items-center justify-between mb-6 reveal">
+                        <h2 class="font-display text-xl sm:text-2xl font-bold tracking-tight">Browse Categories</h2>
+                        <button onclick="navigateTo('collection')" class="text-sm text-muted hover:text-accent transition flex items-center gap-1.5">View all <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                        <button onclick="navigateTo('library')" class="cat-link card-shine rounded-2xl border border-white/[0.05] bg-card p-5 text-left reveal" style="transition-delay:0ms" onmousemove="handleShine(event,this)">
+                            <div class="cat-link-icon w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300 mb-3"><i class="fa-solid fa-book-open text-subtle text-sm"></i></div>
+                            <p class="text-sm font-semibold text-softWhite">Library</p><p class="text-xs text-muted mt-0.5">1 item</p>
+                        </button>
+                        <button onclick="navigateTo('collection');setTimeout(()=>filterCollection('tech'),100)" class="cat-link card-shine rounded-2xl border border-white/[0.05] bg-card p-5 text-left reveal" style="transition-delay:60ms" onmousemove="handleShine(event,this)">
+                            <div class="cat-link-icon w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300 mb-3"><i class="fa-solid fa-microchip text-subtle text-sm"></i></div>
+                            <p class="text-sm font-semibold text-softWhite">Tech</p><p class="text-xs text-muted mt-0.5">Coming soon</p>
+                        </button>
+                        <button onclick="navigateTo('collection');setTimeout(()=>filterCollection('fashion'),100)" class="cat-link card-shine rounded-2xl border border-white/[0.05] bg-card p-5 text-left reveal" style="transition-delay:120ms" onmousemove="handleShine(event,this)">
+                            <div class="cat-link-icon w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300 mb-3"><i class="fa-solid fa-shirt text-subtle text-sm"></i></div>
+                            <p class="text-sm font-semibold text-softWhite">Fashion</p><p class="text-xs text-muted mt-0.5">Coming soon</p>
+                        </button>
+                        <button onclick="navigateTo('collection');setTimeout(()=>filterCollection('beauty'),100)" class="cat-link card-shine rounded-2xl border border-white/[0.05] bg-card p-5 text-left reveal" style="transition-delay:180ms" onmousemove="handleShine(event,this)">
+                            <div class="cat-link-icon w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300 mb-3"><i class="fa-solid fa-spa text-subtle text-sm"></i></div>
+                            <p class="text-sm font-semibold text-softWhite">Beauty</p><p class="text-xs text-muted mt-0.5">Coming soon</p>
+                        </button>
+                        <button onclick="navigateTo('collection');setTimeout(()=>filterCollection('outdoor'),100)" class="cat-link card-shine rounded-2xl border border-white/[0.05] bg-card p-5 text-left reveal" style="transition-delay:240ms" onmousemove="handleShine(event,this)">
+                            <div class="cat-link-icon w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300 mb-3"><i class="fa-solid fa-tree text-subtle text-sm"></i></div>
+                            <p class="text-sm font-semibold text-softWhite">Outdoor</p><p class="text-xs text-muted mt-0.5">Coming soon</p>
+                        </button>
+                    </div>
+                </section>
+
+                <div class="accent-divider mb-12"></div>
+
+                <!-- Featured Product -->
+                <section class="pb-12">
+                    <div class="flex items-center justify-between mb-6 reveal"><div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent mb-1">Featured</p><h2 class="font-display text-xl sm:text-2xl font-bold tracking-tight">Editor's Pick</h2></div></div>
+                    <div class="reveal" style="transition-delay:80ms">
+                        <div class="product-card card-shine rounded-2xl border border-white/[0.05] bg-card overflow-hidden cursor-pointer max-w-2xl" onmousemove="handleShine(event,this)" onclick="navigateTo('detail')">
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="relative sm:w-64 h-52 sm:h-auto overflow-hidden bg-surface shrink-0">
+                                    <img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Automatic Fold Umbrella" class="w-full h-full object-cover img-zoom" loading="lazy">
+                                    <div class="absolute top-3 left-3 flex items-center gap-2 rounded-lg bg-bg/85 backdrop-blur-sm border border-accent/15 px-2.5 py-1"><div class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></div><span class="text-[10px] font-semibold text-accent tracking-wide uppercase">Best Seller</span></div>
+                                </div>
+                                <div class="p-5 flex flex-col justify-center">
+                                    <p class="text-[10px] font-semibold tracking-widest uppercase text-muted mb-1">Library</p>
+                                    <h3 class="font-semibold text-softWhite text-lg leading-snug">Automatic Opened, Closed Fold Umbrella</h3>
+                                    <p class="text-sm text-muted mt-1.5 leading-relaxed line-clamp-2">Premium automatic fold umbrella with reinforced fiberglass ribs, wind-resistant canopy, and compact carrying case.</p>
+                                    <div class="flex items-center gap-2.5 mt-3"><span class="font-bold text-accent">20,000/- MMK</span><span class="text-xs text-muted line-through">25,000/-</span><span class="text-[10px] font-semibold text-sage bg-sage/10 px-1.5 py-0.5 rounded">-20%</span></div>
+                                    <div class="flex gap-2 mt-4">
+                                        <button onclick="event.stopPropagation();addToCart()" class="rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-bg hover:bg-accentDim transition">Add to cart</button>
+                                        <button onclick="event.stopPropagation();navigateTo('detail')" class="rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-2 text-sm text-subtle hover:bg-white/[0.06] transition">View details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trust badges -->
+                <section class="pb-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 reveal">
+                        <div class="rounded-2xl border border-white/[0.05] bg-card p-5 flex items-center gap-4"><div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-truck-fast text-accent"></i></div><div><p class="text-sm font-semibold text-softWhite">Fast Delivery</p><p class="text-xs text-muted mt-0.5">Free over 50K MMK</p></div></div>
+                        <div class="rounded-2xl border border-white/[0.05] bg-card p-5 flex items-center gap-4"><div class="w-11 h-11 rounded-xl bg-sage/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-shield-halved text-sage"></i></div><div><p class="text-sm font-semibold text-softWhite">Secure Checkout</p><p class="text-xs text-muted mt-0.5">Encrypted payment</p></div></div>
+                        <div class="rounded-2xl border border-white/[0.05] bg-card p-5 flex items-center gap-4"><div class="w-11 h-11 rounded-xl bg-coral/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-rotate-left text-coral"></i></div><div><p class="text-sm font-semibold text-softWhite">Easy Returns</p><p class="text-xs text-muted mt-0.5">7-day return policy</p></div></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===================== COLLECTION VIEW ===================== -->
+            <div id="view-collection" class="view-section">
+                <div class="py-8">
+                    <div class="reveal"><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent mb-2">Browse</p><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Full Collection</h1><p class="mt-2 text-subtle max-w-lg">Explore items across all categories. More products added regularly.</p></div>
+                    <div class="mt-6 search-wrap reveal" style="transition-delay:60ms"><div class="flex items-center gap-3 rounded-2xl bg-surface/90 border border-white/[0.06] px-5 py-3.5 max-w-lg"><i class="fa-solid fa-magnifying-glass text-muted text-sm"></i><input type="text" id="collectionSearch" placeholder="Filter this collection..." class="bg-transparent flex-1 text-sm text-softWhite placeholder-muted outline-none" oninput="filterCollectionWithSearch()" aria-label="Filter collection"></div></div>
+                    <div class="flex flex-wrap gap-2.5 mt-6 reveal" style="transition-delay:100ms">
+                        <button class="cat-pill active rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="all" onclick="filterCollection('all')">All items</button>
+                        <button class="cat-pill rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="library" onclick="filterCollection('library')"><i class="fa-solid fa-book-open mr-1.5 text-xs"></i>Library</button>
+                        <button class="cat-pill rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="tech" onclick="filterCollection('tech')"><i class="fa-solid fa-microchip mr-1.5 text-xs"></i>Tech & Gadgets</button>
+                        <button class="cat-pill rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="fashion" onclick="filterCollection('fashion')"><i class="fa-solid fa-shirt mr-1.5 text-xs"></i>Fashion</button>
+                        <button class="cat-pill rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="beauty" onclick="filterCollection('beauty')"><i class="fa-solid fa-spa mr-1.5 text-xs"></i>Beauty & Care</button>
+                        <button class="cat-pill rounded-full border border-white/[0.06] bg-white/[0.03] px-5 py-2 text-sm text-subtle" data-colcat="outdoor" onclick="filterCollection('outdoor')"><i class="fa-solid fa-tree mr-1.5 text-xs"></i>Outdoor</button>
+                    </div>
+                    <div class="mt-8" id="collectionContent"></div>
+                </div>
+            </div>
+
+            <!-- ===================== LIBRARY VIEW ===================== -->
+            <div id="view-library" class="view-section">
+                <div class="py-8">
+                    <div class="reveal"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/10"><i class="fa-solid fa-book-open text-accent text-sm"></i></div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">Category</p></div><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Library</h1><p class="mt-2 text-subtle max-w-lg">Curated essentials — from daily utility to ambient comfort. Handpicked for quality.</p></div>
+                    <div class="mt-8" id="libraryContent"></div>
+                </div>
+            </div>
+
+            <!-- ===================== DETAIL VIEW ===================== -->
+            <div id="view-detail" class="view-section">
+                <nav class="py-4 flex items-center gap-2 text-xs text-muted reveal" aria-label="Breadcrumb"><a href="#" onclick="navigateTo('home');return false;" class="hover:text-accent transition">Home</a><i class="fa-solid fa-chevron-right text-[8px] text-white/10"></i><a href="#" onclick="navigateTo('library');return false;" class="hover:text-accent transition">Library</a><i class="fa-solid fa-chevron-right text-[8px] text-white/10"></i><span class="text-subtle">Automatic Fold Umbrella</span></nav>
+                <section class="relative pb-8">
+                    <div class="deco-line hidden lg:block" style="left:33%;top:0;bottom:0;"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                        <div class="reveal-left relative">
+                            <div class="absolute -top-3 -left-3 z-10 flex flex-col gap-2">
+                                <div class="flex items-center gap-2 rounded-xl bg-bg/90 backdrop-blur-sm border border-accent/15 px-3 py-2 shadow-lg shadow-accent/5"><div class="w-2 h-2 rounded-full bg-accent pulse-dot"></div><span class="text-[11px] font-semibold text-accent tracking-wide uppercase">Best Seller</span></div>
+                                <div class="rounded-xl bg-bg/90 backdrop-blur-sm border border-sage/15 px-3 py-2 shadow-lg"><span class="text-[11px] font-semibold text-sage tracking-wide uppercase"><i class="fa-solid fa-arrow-down mr-1"></i>20% off</span></div>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden glow-ring transition-all duration-500 bg-surface border border-white/[0.04]"><img src="https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg" alt="Automatic Fold Umbrella" class="w-full aspect-square object-cover img-zoom"></div>
+                            <div class="flex items-center justify-center gap-2 mt-4"><button class="w-3 h-3 rounded-full bg-accent border-2 border-accent/30" aria-label="View 1"></button><button class="w-3 h-3 rounded-full bg-white/10 border-2 border-transparent hover:bg-white/20 transition" aria-label="View 2"></button><button class="w-3 h-3 rounded-full bg-white/10 border-2 border-transparent hover:bg-white/20 transition" aria-label="View 3"></button></div>
+                        </div>
+                        <div class="reveal-right lg:pt-4">
+                            <div class="flex items-center gap-2 mb-3"><span class="rounded-lg bg-white/[0.04] border border-white/[0.06] px-3 py-1 text-[10px] font-semibold tracking-widest uppercase text-muted">Library</span><span class="rounded-lg bg-white/[0.04] border border-white/[0.06] px-3 py-1 text-[10px] font-semibold tracking-widest uppercase text-muted">Utility</span></div>
+                            <h1 class="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-800 leading-[1.08] tracking-tight">Automatic Opened,<br>Closed Fold Umbrella</h1>
+                            <p class="mt-4 text-subtle leading-relaxed max-w-lg">Premium automatic open/close fold umbrella with reinforced fiberglass ribs, wind-resistant canopy, and compact carrying case. Engineered for daily commuters who refuse to compromise on quality.</p>
+                            <div class="flex items-center gap-3 mt-5"><div class="flex gap-0.5"><i class="fa-solid fa-star text-accent text-sm"></i><i class="fa-solid fa-star text-accent text-sm"></i><i class="fa-solid fa-star text-accent text-sm"></i><i class="fa-solid fa-star text-accent text-sm"></i><i class="fa-solid fa-star-half-stroke text-accent text-sm"></i></div><span class="text-sm text-subtle font-medium">4.8</span><span class="w-1 h-1 rounded-full bg-white/10"></span><span class="text-xs text-sage font-medium"><i class="fa-solid fa-circle-check mr-1"></i>In stock</span></div>
+                            <div class="mt-6 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]"><div class="flex items-end gap-3"><span class="font-display text-4xl font-bold text-accent">20,000</span><span class="text-lg text-muted line-through mb-1">25,000</span><span class="rounded-lg bg-sage/10 text-sage text-xs font-bold px-2.5 py-1 mb-1">SAVE 5,000</span></div><p class="text-xs text-muted mt-1.5">MMK / per unit &middot; Tax included</p></div>
+                            <div class="mt-6"><p class="text-xs font-semibold tracking-wider uppercase text-muted mb-3">Color</p><div class="flex gap-3"><button class="w-9 h-9 rounded-xl bg-[#1a1a2e] border-2 border-accent shadow-lg shadow-accent/10" aria-label="Navy"></button><button class="w-9 h-9 rounded-xl bg-[#2d2d2d] border-2 border-transparent hover:border-white/20 transition" aria-label="Black"></button><button class="w-9 h-9 rounded-xl bg-[#8b4513] border-2 border-transparent hover:border-white/20 transition" aria-label="Brown"></button><button class="w-9 h-9 rounded-xl bg-[#c41e3a] border-2 border-transparent hover:border-white/20 transition" aria-label="Red"></button></div></div>
+                            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                                <div class="flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.02] px-4 py-3"><button class="qty-btn" onclick="changeMainQty(-1)" aria-label="Decrease"><i class="fa-solid fa-minus text-[10px]"></i></button><span class="text-lg font-semibold w-6 text-center" id="mainQty">1</span><button class="qty-btn" onclick="changeMainQty(1)" aria-label="Increase"><i class="fa-solid fa-plus text-[10px]"></i></button></div>
+                                <button onclick="addToCart()" class="flex-1 rounded-2xl bg-accent py-3.5 font-semibold text-bg hover:bg-accentDim transition text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-accent/15"><i class="fa-solid fa-bag-shopping text-xs"></i> Add to cart</button>
+                                <button onclick="showToast('Added to wishlist','success')" class="w-14 rounded-2xl border border-white/[0.06] bg-white/[0.02] flex items-center justify-center hover:bg-white/[0.06] hover:border-coral/20 transition group" aria-label="Wishlist"><i class="fa-regular fa-heart text-subtle group-hover:text-coral transition"></i></button>
+                            </div>
+                            <div class="mt-6 grid grid-cols-3 gap-3">
+                                <div class="text-center p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"><i class="fa-solid fa-truck-fast text-accent text-sm mb-1.5 block"></i><p class="text-[10px] text-muted leading-tight">Free delivery<br>over 50K MMK</p></div>
+                                <div class="text-center p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"><i class="fa-solid fa-shield-halved text-sage text-sm mb-1.5 block"></i><p class="text-[10px] text-muted leading-tight">Secure<br>checkout</p></div>
+                                <div class="text-center p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"><i class="fa-solid fa-rotate-left text-coral text-sm mb-1.5 block"></i><p class="text-[10px] text-muted leading-tight">7-day easy<br>returns</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="accent-divider my-4"></div>
+                <section class="py-6 overflow-hidden reveal"><div class="marquee-track"><div class="flex items-center gap-8 px-4"><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-wind mr-2 text-accent/30"></i>WIND RESISTANT</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-bolt mr-2 text-accent/30"></i>AUTO OPEN & CLOSE</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-sun mr-2 text-accent/30"></i>UV PROTECTION</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-feather mr-2 text-accent/30"></i>ULTRA LIGHTWEIGHT</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-box mr-2 text-accent/30"></i>COMPACT FOLD</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-droplet mr-2 text-accent/30"></i>WATERPROOF CANOPY</span><span class="text-white/[0.06]">&#x2022;</span></div><div class="flex items-center gap-8 px-4" aria-hidden="true"><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-wind mr-2 text-accent/30"></i>WIND RESISTANT</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-bolt mr-2 text-accent/30"></i>AUTO OPEN & CLOSE</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-sun mr-2 text-accent/30"></i>UV PROTECTION</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-feather mr-2 text-accent/30"></i>ULTRA LIGHTWEIGHT</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-box mr-2 text-accent/30"></i>COMPACT FOLD</span><span class="text-white/[0.06]">&#x2022;</span><span class="text-sm text-muted/40 font-medium whitespace-nowrap"><i class="fa-solid fa-droplet mr-2 text-accent/30"></i>WATERPROOF CANOPY</span><span class="text-white/[0.06]">&#x2022;</span></div></div></section>
+                <div class="accent-divider my-4"></div>
+                <section class="py-12">
+                    <div class="flex items-end justify-between mb-8 reveal"><div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent mb-2">Engineered Details</p><h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Built Different</h2></div><p class="text-sm text-muted max-w-xs hidden sm:block text-right">Every component designed for real-world conditions.</p></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:0ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-bolt text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">One-Touch Mechanism</h3><p class="mt-2 text-sm text-muted leading-relaxed">Fully automatic open and close with a single button press.</p></div>
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:80ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-wind text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">Wind Resistant</h3><p class="mt-2 text-sm text-muted leading-relaxed">Withstands gusts up to 40km/h. Fiberglass ribs flex instead of snapping.</p></div>
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:160ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-sun text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">UV Protection</h3><p class="mt-2 text-sm text-muted leading-relaxed">Blocks 95% of UVA/UVB rays. Dual-purpose — rain or shine.</p></div>
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:240ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-feather text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">Ultra Lightweight</h3><p class="mt-2 text-sm text-muted leading-relaxed">Just 380g — lighter than a water bottle.</p></div>
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:320ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-compress text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">Compact Fold</h3><p class="mt-2 text-sm text-muted leading-relaxed">Folds to 28cm. Slips into any bag.</p></div>
+                        <div class="feature-card card-shine rounded-2xl border border-white/[0.05] bg-card p-6 reveal" style="transition-delay:400ms" onmousemove="handleShine(event,this)"><div class="feature-icon w-12 h-12 rounded-xl bg-white/[0.04] flex items-center justify-center transition-all duration-300"><i class="fa-solid fa-gem text-accent"></i></div><h3 class="mt-4 font-semibold text-softWhite">Premium Build</h3><p class="mt-2 text-sm text-muted leading-relaxed">8-rib fiberglass frame, pongee canopy, rubberized handle.</p></div>
+                    </div>
+                </section>
+                <section class="py-12 reveal">
+                    <div class="accent-divider mb-12"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent mb-2">Technical Specs</p><h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-8">By the Numbers</h2>
+                            <div class="space-y-5">
+                                <div><div class="flex justify-between mb-1.5"><span class="text-sm text-subtle">Wind Resistance</span><span class="text-sm font-semibold text-accent">40 km/h</span></div><div class="h-2 rounded-full bg-white/[0.04] overflow-hidden"><div class="spec-fill h-full rounded-full bg-gradient-to-r from-accent/80 to-accent" data-width="80"></div></div></div>
+                                <div><div class="flex justify-between mb-1.5"><span class="text-sm text-subtle">UV Protection</span><span class="text-sm font-semibold text-sage">95%</span></div><div class="h-2 rounded-full bg-white/[0.04] overflow-hidden"><div class="spec-fill h-full rounded-full bg-gradient-to-r from-sage/80 to-sage" data-width="95"></div></div></div>
+                                <div><div class="flex justify-between mb-1.5"><span class="text-sm text-subtle">Water Repellency</span><span class="text-sm font-semibold text-coral">98%</span></div><div class="h-2 rounded-full bg-white/[0.04] overflow-hidden"><div class="spec-fill h-full rounded-full bg-gradient-to-r from-coral/80 to-coral" data-width="98"></div></div></div>
+                                <div><div class="flex justify-between mb-1.5"><span class="text-sm text-subtle">Portability</span><span class="text-sm font-semibold text-softWhite">28cm folded</span></div><div class="h-2 rounded-full bg-white/[0.04] overflow-hidden"><div class="spec-fill h-full rounded-full bg-gradient-to-r from-white/40 to-white/70" data-width="88"></div></div></div>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl border border-white/[0.05] bg-card overflow-hidden"><div class="px-5 py-4 border-b border-white/[0.04] bg-white/[0.015]"><p class="text-xs font-semibold tracking-wider uppercase text-muted">Specifications</p></div><div class="divide-y divide-white/[0.03]">
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Canopy Material</span><span class="text-sm text-softWhite font-medium">Pongee 210T</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Frame</span><span class="text-sm text-softWhite font-medium">8-rib Fiberglass</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Open Diameter</span><span class="text-sm text-softWhite font-medium">105 cm</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Folded Length</span><span class="text-sm text-softWhite font-medium">28 cm</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Weight</span><span class="text-sm text-softWhite font-medium">380 g</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Mechanism</span><span class="text-sm text-softWhite font-medium">Auto Open/Close</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Handle</span><span class="text-sm text-softWhite font-medium">Rubberized Grip</span></div>
+                            <div class="flex justify-between px-5 py-3.5"><span class="text-sm text-muted">Included</span><span class="text-sm text-softWhite font-medium">Storage Sleeve</span></div>
+                        </div></div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-white/[0.03] bg-surface/50 mt-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <div><div class="flex items-center gap-2.5 mb-4"><div class="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center border border-accent/10"><span class="text-accent font-display font-bold text-lg">KC</span></div><span class="font-display font-semibold text-lg">K.Subject-1-</span></div><p class="text-sm text-muted leading-relaxed">A curated marketplace for discovering premium products with a modern shopping experience.</p></div>
+                    <div><h4 class="font-semibold text-sm mb-4 text-softWhite">Navigate</h4><ul class="space-y-2.5 text-sm text-muted"><li><a href="#" onclick="navigateTo('home');return false;" class="hover:text-accent transition">Home</a></li><li><a href="#" onclick="navigateTo('collection');return false;" class="hover:text-accent transition">Collection</a></li><li><a href="#" onclick="navigateTo('library');return false;" class="hover:text-accent transition">Library</a></li></ul></div>
+                    <div><h4 class="font-semibold text-sm mb-4 text-softWhite">Support</h4><ul class="space-y-2.5 text-sm text-muted"><li><a href="#" class="hover:text-accent transition" onclick="showToast('Contact page coming soon','info');return false;">Contact us</a></li><li><a href="#" class="hover:text-accent transition" onclick="showToast('FAQ page coming soon','info');return false;">FAQ</a></li><li><a href="#" class="hover:text-accent transition" onclick="showToast('Shipping info coming soon','info');return false;">Shipping</a></li><li><a href="#" class="hover:text-accent transition" onclick="showToast('Returns info coming soon','info');return false;">Returns</a></li></ul></div>
+                    <div><h4 class="font-semibold text-sm mb-4 text-softWhite">Stay updated</h4><p class="text-sm text-muted mb-3">New drops and deals, weekly.</p><div class="flex gap-2"><input type="email" id="emailInput" placeholder="your@email.com" class="flex-1 min-w-0 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-2.5 text-sm text-softWhite placeholder-muted outline-none focus:border-accent/25 transition"><button onclick="handleSubscribe()" class="shrink-0 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-bg hover:bg-accentDim transition"><i class="fa-solid fa-arrow-right"></i></button></div></div>
+                </div>
+                <div class="mt-10 pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted"><p>2025 K.Subject-1-. Curated with care.</p><div class="flex gap-5"><a href="#" class="hover:text-accent transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="hover:text-accent transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="hover:text-accent transition" aria-label="Telegram"><i class="fa-brands fa-telegram-plane"></i></a></div></div>
+            </div>
+        </footer>
+    </div>
+
+<script>
+const products = [{ id:1, name:'Automatic Fold Umbrella', category:'library', categoryLabel:'Library', badge:'Best Seller', price:20000, oldPrice:25000, image:'https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg', desc:'Premium automatic open/close fold umbrella with reinforced fiberglass ribs, wind-resistant canopy, and compact carrying case.' }];
+const product = products[0];
+
+// Particles
+const canvas = document.getElementById('particlesCanvas');
+const ctx = canvas.getContext('2d');
+let particlesArr = [];
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+for (let i=0;i<30;i++) particlesArr.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, size:Math.random()*1.4+0.3, speedX:(Math.random()-0.5)*0.1, speedY:(Math.random()-0.5)*0.1, opacity:Math.random()*0.18+0.04, color:['#e8a630','#e07a5f','#81b29a','#ede8e0'][Math.floor(Math.random()*4)] });
+function drawParticles() { ctx.clearRect(0,0,canvas.width,canvas.height); particlesArr.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(0.1,p.size),0,Math.PI*2); ctx.fillStyle=p.color; ctx.globalAlpha=p.opacity; ctx.fill(); p.x+=p.speedX; p.y+=p.speedY; if(p.x<-10)p.x=canvas.width+10; if(p.x>canvas.width+10)p.x=-10; if(p.y<-10)p.y=canvas.height+10; if(p.y>canvas.height+10)p.y=-10; }); ctx.globalAlpha=1; requestAnimationFrame(drawParticles); }
+drawParticles();
+
+// Navigation
+let currentView = 'home';
+function navigateTo(view) {
+    document.querySelectorAll('.view-section').forEach(v=>v.classList.remove('active'));
+    const t = document.getElementById('view-'+view); if(t) t.classList.add('active');
+    currentView = view;
+    document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active', l.dataset.nav===view));
+    window.scrollTo({top:0, behavior:'smooth'});
+    if(view==='collection'){ collectionFilter='all'; document.querySelectorAll('[data-colcat]').forEach(p=>p.classList.toggle('active',p.dataset.colcat==='all')); renderCollectionView('all'); }
+    if(view==='library') renderLibraryView();
+    document.querySelectorAll('input[type="text"]:not(#emailInput)').forEach(i=>{if(i.id!=='emailInput')i.value='';});
+    closeSearchResults();
+    setTimeout(()=>{ document.querySelectorAll('.reveal:not(.visible), .reveal-left:not(.visible), .reveal-right:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .slide-in-up:not(.visible)').forEach(el=>revealObserver.observe(el)); },50);
+}
+
+let mobileNavOpen=false;
+function toggleMobileNav(){ const n=document.getElementById('mobileNav'); mobileNavOpen=!mobileNavOpen; n.style.opacity=mobileNavOpen?'1':'0'; n.style.pointerEvents=mobileNavOpen?'all':'none'; n.style.transform=mobileNavOpen?'translateY(0)':'translateY(8px)'; }
+document.addEventListener('click',(e)=>{if(mobileNavOpen&&!e.target.closest('.relative'))toggleMobileNav();});
+
+// Search
+function handleSearch(query) {
+    const q=query.toLowerCase().trim();
+    ['headerSearchResults','heroSearchResults'].forEach(id=>{
+        const r=document.getElementById(id); if(!r)return;
+        if(!q){r.classList.remove('open');return;}
+        const matches=products.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.categoryLabel.toLowerCase().includes(q)||(p.badge&&p.badge.toLowerCase().includes(q)));
+        if(!matches.length){ r.innerHTML=`<div class="p-5 text-center"><i class="fa-solid fa-magnifying-glass text-muted/30 text-xl mb-2 block"></i><p class="text-sm text-muted">No results for "${query}"</p></div>`; }
+        else{ r.innerHTML=matches.map(p=>`<button onclick="navigateTo('detail');closeSearchResults();clearAllSearchInputs();" class="w-full flex items-center gap-4 p-4 hover:bg-white/[0.03] transition text-left border-b border-white/[0.03] last:border-0"><img src="${p.image}" alt="${p.name}" class="w-12 h-12 rounded-xl object-cover bg-surface shrink-0"><div class="flex-1 min-w-0"><p class="text-sm font-semibold text-softWhite truncate">${p.name}</p><p class="text-xs text-muted mt-0.5">${p.categoryLabel} &middot; ${p.price.toLocaleString()}/- MMK</p></div><i class="fa-solid fa-arrow-right text-xs text-muted/40 shrink-0"></i></button>`).join(''); }
+        r.classList.add('open');
+    });
+}
+function closeSearchResults(){document.querySelectorAll('.search-results').forEach(r=>r.classList.remove('open'));}
+function clearAllSearchInputs(){['headerSearch','heroSearch','mobileSearch','collectionSearch'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});}
+document.addEventListener('keydown',(e)=>{if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&document.activeElement.tagName!=='INPUT'){e.preventDefault();if(currentView==='home')document.getElementById('heroSearch').focus();else document.getElementById('headerSearch').focus();}});
+
+// Collection
+let collectionFilter='all';
+function filterCollection(cat){collectionFilter=cat;document.querySelectorAll('[data-colcat]').forEach(p=>p.classList.toggle('active',p.dataset.colcat===cat));renderCollectionView(cat);}
+function filterCollectionWithSearch(){renderCollectionView(collectionFilter,document.getElementById('collectionSearch').value.toLowerCase().trim());}
+function renderCollectionView(cat,sq){const c=document.getElementById('collectionContent');const q=sq||'';let f=products;if(cat!=='all')f=f.filter(p=>p.category===cat);if(q)f=f.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.categoryLabel.toLowerCase().includes(q)||(p.badge&&p.badge.toLowerCase().includes(q)));if(!f.length){const isS=q.length>0;c.innerHTML=`<div class="flex flex-col items-center justify-center py-24 text-center reveal visible"><div class="w-24 h-24 rounded-full bg-white/[0.03] flex items-center justify-center mb-5 border border-white/[0.05]"><i class="fa-solid fa-${isS?'magnifying-glass':'box-open'} text-3xl text-muted/40"></i></div><h3 class="font-display text-xl font-semibold text-subtle">${isS?'No matches':'No items yet'}</h3><p class="text-sm text-muted mt-2 max-w-sm">${isS?`Nothing found for "${q}".`:''} ${isS?'Try different keywords.':'Check back soon.'}</p><button onclick="${isS?"document.getElementById('collectionSearch').value='';filterCollectionWithSearch();":"filterCollection('all')"}" class="mt-6 rounded-full border border-accent/20 bg-accent/8 px-6 py-2.5 text-sm font-medium text-accent hover:bg-accent/15 transition">${isS?'Clear search':'View all items'}</button></div>`;return;}c.innerHTML=`<p class="text-sm text-muted mb-5 reveal visible">${f.length} item${f.length!==1?'s':''}</p><div class="max-w-md reveal visible">${f.map(p=>renderProductCard(p,cat==='all')).join('')}</div>`;}
+function renderLibraryView(){document.getElementById('libraryContent').innerHTML=`<p class="text-sm text-muted mb-5 reveal visible">1 item</p><div class="max-w-md reveal visible">${renderProductCard(product,false)}</div>`;}
+function renderProductCard(p,showCat){const d=p.oldPrice?Math.round((1-p.price/p.oldPrice)*100):0;return`<article class="product-card card-shine rounded-2xl border border-white/[0.05] bg-card overflow-hidden cursor-pointer" onmousemove="handleShine(event,this)" onclick="navigateTo('detail')"><div class="relative h-64 overflow-hidden bg-surface"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover img-zoom" loading="lazy"><div class="absolute top-3 left-3 flex items-center gap-2 rounded-xl bg-bg/85 backdrop-blur-sm border border-accent/15 px-3 py-1.5"><div class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></div><span class="text-[10px] font-semibold text-accent tracking-wide uppercase">${p.badge}</span></div></div><div class="p-5">${showCat?`<p class="text-[10px] font-semibold tracking-widest uppercase text-muted mb-1">${p.categoryLabel}</p>`:''}<h4 class="font-semibold text-softWhite">${p.name}</h4><p class="text-sm text-muted mt-1.5 leading-relaxed line-clamp-2">${p.desc}</p><div class="flex items-center gap-2.5 mt-3"><span class="font-bold text-accent">${p.price.toLocaleString()}/- MMK</span>${p.oldPrice?`<span class="text-xs text-muted line-through">${p.oldPrice.toLocaleString()}/-</span><span class="text-[10px] font-semibold text-sage bg-sage/10 px-1.5 py-0.5 rounded">-${d}%</span>`:''}</div><div class="flex gap-2 mt-4"><button onclick="event.stopPropagation();addToCart()" class="flex-1 rounded-xl bg-accent py-2.5 text-sm font-semibold text-bg hover:bg-accentDim transition flex items-center justify-center gap-2"><i class="fa-solid fa-bag-shopping text-xs"></i> Add to cart</button><button onclick="event.stopPropagation();navigateTo('detail')" class="rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-2.5 text-sm text-subtle hover:bg-white/[0.06] transition">Details</button></div></div></article>`;}
+
+// Cart
+let cart=[], mainQty=1;
+function changeMainQty(d){mainQty=Math.max(1,Math.min(10,mainQty+d));document.getElementById('mainQty').textContent=mainQty;}
+function addToCart(){const e=cart.find(c=>c.id===1);if(e)e.qty+=mainQty;else cart.push({id:1,name:product.name,price:product.price,image:product.image,qty:mainQty});updateCartUI();showToast(`${mainQty}x Umbrella added to cart`,'success');mainQty=1;document.getElementById('mainQty').textContent=1;}
+function removeFromCart(id){cart=cart.filter(c=>c.id!==id);updateCartUI();}
+function changeQty(id,d){const i=cart.find(c=>c.id===id);if(!i)return;i.qty+=d;if(i.qty<=0){removeFromCart(id);return;}updateCartUI();}
+function updateCartUI(){const t=cart.reduce((s,c)=>s+c.qty,0),sub=cart.reduce((s,c)=>s+c.price*c.qty,0);const b=document.getElementById('cartBadge');b.style.display=t>0?'flex':'none';b.textContent=t;document.getElementById('cartCount').textContent=`${t} item${t!==1?'s':''}`;const c=document.getElementById('cartItems'),f=document.getElementById('cartFooter');if(!cart.length){c.innerHTML=`<div class="flex flex-col items-center justify-center h-full text-center"><div class="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-4"><i class="fa-solid fa-bag-shopping text-2xl text-muted"></i></div><p class="text-subtle font-medium">Your cart is empty</p><p class="text-sm text-muted mt-1">Browse and add items you love</p></div>`;f.style.display='none';return;}f.style.display='block';document.getElementById('cartSubtotal').textContent=sub.toLocaleString()+'/ - MMK';c.innerHTML=cart.map(c=>`<div class="flex gap-4 mb-4 pb-4 border-b border-white/[0.04]"><img src="${c.image}" alt="${c.name}" class="w-16 h-16 rounded-xl object-cover bg-surface shrink-0"><div class="flex-1 min-w-0"><h5 class="text-sm font-semibold text-softWhite truncate">${c.name}</h5><p class="text-xs text-muted mt-0.5">${c.price.toLocaleString()}/- MMK</p><div class="flex items-center justify-between mt-2"><div class="flex items-center gap-2"><button class="qty-btn" onclick="changeQty(${c.id},-1)"><i class="fa-solid fa-minus text-[10px]"></i></button><span class="text-sm font-medium w-5 text-center">${c.qty}</span><button class="qty-btn" onclick="changeQty(${c.id},1)"><i class="fa-solid fa-plus text-[10px]"></i></button></div><button onclick="removeFromCart(${c.id})" class="text-muted hover:text-coral transition text-xs"><i class="fa-solid fa-trash-can"></i></button></div></div></div>`).join('');}
+function toggleCart(){const o=document.getElementById('cartOverlay'),p=document.getElementById('cartPanel'),isOpen=p.classList.contains('open');o.classList.toggle('open',!isOpen);p.classList.toggle('open',!isOpen);document.body.style.overflow=isOpen?'':'hidden';}
+
+// Toast
+function showToast(m,t='success'){const c=document.getElementById('toastContainer'),to=document.createElement('div');to.className='toast';to.innerHTML=`${t==='success'?'<i class="fa-solid fa-circle-check text-sage"></i>':'<i class="fa-solid fa-circle-info text-accent"></i>'}<span>${m}</span>`;c.appendChild(to);requestAnimationFrame(()=>to.classList.add('show'));setTimeout(()=>{to.classList.remove('show');setTimeout(()=>to.remove(),350);},2800);}
+function handleSubscribe(){const i=document.getElementById('emailInput');if(!i.value.trim()||!i.value.includes('@')){showToast('Please enter a valid email','info');return;}showToast('Thanks for subscribing!','success');i.value='';}
+function handleShine(e,el){const r=el.getBoundingClientRect();el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');}
+
+// Scroll Reveal
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.spec-fill').forEach(bar=>{const w=bar.dataset.width;if(w)setTimeout(()=>{bar.style.width=w+'%';},200);});}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.slide-in-left,.slide-in-right,.slide-in-up').forEach(el=>revealObserver.observe(el));
+
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){if(mobileNavOpen)toggleMobileNav();if(document.getElementById('cartPanel').classList.contains('open'))toggleCart();closeSearchResults();}});
+</script>
+</body>
+</html>
