@@ -41,6 +41,11 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0e0e15; }
         ::-webkit-scrollbar-thumb { background: #2a2a38; border-radius: 3px; }
+        /* Better scrollbar for chat */
+        .chat-scroll::-webkit-scrollbar { width: 6px; }
+        .chat-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        .chat-scroll::-webkit-scrollbar-thumb { background: rgba(232,166,48,0.2); border-radius: 10px; }
+        .chat-scroll::-webkit-scrollbar-thumb:hover { background: rgba(232,166,48,0.4); }
 
         .atmo-bg {
             position: fixed; inset: 0; pointer-events: none; z-index: 0;
@@ -240,7 +245,7 @@
             50% { opacity: 0.8; }
         }
 
-        /* ─── SPECIAL AI ASSISTANT STYLES (The "Special" Design) ─── */
+        /* ─── SPECIAL AI ASSISTANT STYLES (Updated Design) ─── */
         .ai-wrapper {
             background: rgba(10, 10, 14, 0.85);
             backdrop-filter: blur(20px);
@@ -259,6 +264,9 @@
                 calc(100% - 20px) 100%, 
                 0 100%
             );
+            /* INCREASED HEIGHT */
+            min-height: 650px; 
+            height: 75vh;
         }
         /* Scanning Border Effect */
         .ai-wrapper::before {
@@ -285,7 +293,7 @@
             padding: 14px 22px;
             position: relative;
             animation: msgEnter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            font-size: 14px;
+            font-size: 15px; /* Slightly larger text for readability */
             line-height: 1.6;
             /* Geometric look for bubbles */
             border-radius: 4px;
@@ -312,18 +320,28 @@
             border-bottom-left-radius: 12px;
         }
 
-        /* Special Gem Icon Style */
-        .special-gem {
-            background: linear-gradient(135deg, #e8a630 0%, #fff5cc 50%, #c48a20 100%);
+        /* NEW ICON: The "Monogram" Style */
+        .ai-avatar-box {
+            background: #08080d;
+            border: 1px solid rgba(232, 166, 48, 0.3);
+            box-shadow: 0 0 15px rgba(232, 166, 48, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-avatar-box::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(232,166,48,0.1) 100%);
+            pointer-events: none;
+        }
+        .ai-avatar-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8a630, #fff5cc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 10px rgba(232, 166, 48, 0.5));
-            animation: gemFloat 4s ease-in-out infinite;
-        }
-        @keyframes gemFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(5deg); }
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            letter-spacing: -0.5px;
         }
 
         .typing-indicator { display: inline-flex; gap: 6px; padding: 2px 0; }
@@ -341,6 +359,7 @@
             .float-1 { width: 160px; height: 200px; top: 2%; right: 2%; }
             .float-2 { width: 120px; height: 150px; top: 28%; right: -2%; }
             .float-3 { width: 100px; height: 130px; bottom: 2%; right: 15%; }
+            .ai-wrapper { height: 70vh; min-height: 500px; }
         }
         @media (max-width: 480px) {
             .float-2, .float-3 { display: none; }
@@ -714,7 +733,7 @@
 
             <!-- ===================== FAQ / AI ASSISTANT VIEW ===================== -->
             <div id="view-faq" class="view-section">
-                <div class="py-8 max-w-5xl mx-auto h-[calc(100vh-140px)] flex flex-col">
+                <div class="py-8 max-w-5xl mx-auto flex flex-col" style="min-height: 80vh;">
                     <div class="reveal text-center mb-6">
                         <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-2">AI Concierge</h1>
                         <p class="text-subtle">Ask about our collection, specs, or policies.</p>
@@ -726,11 +745,11 @@
                         <div class="absolute inset-0 ai-grid-bg opacity-30 pointer-events-none"></div>
                         
                         <!-- Chat Header -->
-                        <div class="relative z-10 bg-bg/80 backdrop-blur-md border-b border-white/[0.05] p-4 flex items-center justify-between">
+                        <div class="relative z-10 bg-bg/80 backdrop-blur-md border-b border-white/[0.05] p-4 flex items-center justify-between shrink-0">
                             <div class="flex items-center gap-3">
-                                <!-- SPECIAL ICON: The "Curator's Gem" -->
-                                <div class="w-10 h-10 rounded-full bg-surface border border-accent/30 flex items-center justify-center shadow-[0_0_15px_rgba(232,166,48,0.2)]">
-                                    <i class="fa-solid fa-gem special-gem text-xl"></i>
+                                <!-- NEW ICON: Monogram Style -->
+                                <div class="w-10 h-10 rounded-lg ai-avatar-box flex items-center justify-center relative">
+                                    <span class="ai-avatar-text text-xl">K.C.</span>
                                 </div>
                                 <div>
                                     <p class="text-sm font-display font-bold text-softWhite tracking-wide">K.Subject AI</p>
@@ -738,12 +757,12 @@
                                 </div>
                             </div>
                             <div class="hidden sm:block">
-                                <span class="text-[10px] text-muted font-mono border border-white/[0.1] rounded px-2 py-1">v2.5.0</span>
+                                <span class="text-[10px] text-muted font-mono border border-white/[0.1] rounded px-2 py-1">v2.5.1</span>
                             </div>
                         </div>
 
                         <!-- Chat Area -->
-                        <div class="flex-1 relative z-10 p-6 overflow-y-auto scroll-smooth" id="chatContainer">
+                        <div class="flex-1 relative z-10 p-6 overflow-y-auto scroll-smooth chat-scroll" id="chatContainer">
                             <div class="flex flex-col gap-6" id="chatHistory">
                                 <!-- Initial AI Message -->
                                 <div class="chat-bubble ai">
@@ -753,7 +772,7 @@
                         </div>
 
                         <!-- Input Area -->
-                        <div class="relative z-10 p-4 bg-bg/90 border-t border-white/[0.05] backdrop-blur-lg">
+                        <div class="relative z-10 p-4 bg-bg/90 border-t border-white/[0.05] backdrop-blur-lg shrink-0">
                             <form id="chatForm" onsubmit="handleChatSubmit(event)" class="flex gap-3 max-w-4xl mx-auto">
                                 <div class="flex-1 relative input-glow rounded-2xl transition-all duration-300">
                                     <input type="text" id="chatInput" placeholder="Type your question..." class="w-full bg-surface/50 border border-white/[0.08] rounded-2xl px-5 py-3.5 text-sm text-softWhite placeholder-muted outline-none transition-colors duration-300" autocomplete="off">
@@ -869,18 +888,57 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.slide-in-left,.sl
 
 document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){if(mobileNavOpen)toggleMobileNav();if(document.getElementById('cartPanel').classList.contains('open'))toggleCart();closeSearchResults();}});
 
-// ==================== AI ASSISTANT LOGIC ====================
+// ==================== AI ASSISTANT LOGIC (UPDATED) ====================
+
+// Fallback responses to avoid repetition
+const fallbackResponses = [
+    "I'm not quite sure about that. Could you try rephrasing?",
+    "My database is limited to specific product details. Can you be more specific?",
+    "I didn't catch that. Try asking about 'specs', 'delivery', or 'returns'.",
+    "I'm still learning our catalog. Try asking about the umbrella material or pricing."
+];
+
 const knowledgeBase = [
-    { keywords: ['price', 'cost', 'expensive', 'mmk', 'kyat'], answer: "Our current collection starts at 20,000 MMK, down from the original 25,000 MMK." },
-    { keywords: ['return', 'refund', 'policy', 'send back'], answer: "We offer a 7-day return policy for eligible items. They must be unused and in original packaging. You can ask me to guide you to the full Returns page." },
-    { keywords: ['shipping', 'delivery', 'how long', 'fast'], answer: "Delivery is fast and free on orders over 50,000 MMK. For standard orders, costs are calculated securely at checkout." },
-    { keywords: ['specs', 'material', 'rib', 'fiberglass', 'pongee'], answer: "Our featured products use an 8-rib fiberglass frame, a Pongee 210T canopy, and a rubberized handle for durability." },
-    { keywords: ['water', 'rain', 'wet'], answer: "The materials are highly water repellent (98%) with a waterproof canopy designed for heavy rain." },
-    { keywords: ['wind', 'gust', 'strong'], answer: "They are wind-resistant up to 40km/h thanks to the flexible fiberglass ribs." },
-    { keywords: ['uv', 'sun'], answer: "Yes, the materials block 95% of UVA/UVB rays, making them great for sun protection as well." },
-    { keywords: ['size', 'fold', 'compact', 'big'], answer: "When in use, the diameter is 105cm. It folds down compactly to just 28cm in length." },
-    { keywords: ['color', 'black', 'navy', 'red', 'brown'], answer: "Currently, we have Navy, Black, Brown, and Red available in our catalog." },
-    { keywords: ['hello', 'hi', 'hey'], answer: "Greetings. I am here to assist with inquiries regarding our curated collection." }
+    { 
+        keywords: ['price', 'cost', 'expensive', 'mmk', 'kyat', 'pay', 'cheap', 'buy', 'money', 'worth'], 
+        answer: "Our current collection starts at 20,000 MMK, down from the original 25,000 MMK." 
+    },
+    { 
+        keywords: ['return', 'refund', 'policy', 'send back', 'broken', 'damaged', 'not like', 'exchange'], 
+        answer: "We offer a 7-day return policy for eligible items. They must be unused and in original packaging. You can ask me to guide you to the full Returns page." 
+    },
+    { 
+        keywords: ['shipping', 'delivery', 'how long', 'fast', 'ship', 'arrive', 'time', 'days'], 
+        answer: "Delivery is fast and free on orders over 50,000 MMK. For standard orders, costs are calculated securely at checkout." 
+    },
+    { 
+        keywords: ['specs', 'material', 'rib', 'fiberglass', 'pongee', 'made of', 'build', 'quality', 'frame'], 
+        answer: "Our featured products use an 8-rib fiberglass frame, a Pongee 210T canopy, and a rubberized handle for durability." 
+    },
+    { 
+        keywords: ['water', 'rain', 'wet', 'leak', 'storm'], 
+        answer: "The materials are highly water repellent (98%) with a waterproof canopy designed for heavy rain." 
+    },
+    { 
+        keywords: ['wind', 'gust', 'strong', 'breeze', 'fly away'], 
+        answer: "They are wind-resistant up to 40km/h thanks to the flexible fiberglass ribs." 
+    },
+    { 
+        keywords: ['uv', 'sun', 'hot', 'summer', 'shade'], 
+        answer: "Yes, the materials block 95% of UVA/UVB rays, making them great for sun protection as well." 
+    },
+    { 
+        keywords: ['size', 'fold', 'compact', 'big', 'small', 'fit', 'bag', 'pocket'], 
+        answer: "When in use, the diameter is 105cm. It folds down compactly to just 28cm in length." 
+    },
+    { 
+        keywords: ['color', 'black', 'navy', 'red', 'brown', 'look', 'style'], 
+        answer: "Currently, we have Navy, Black, Brown, and Red available in our catalog." 
+    },
+    { 
+        keywords: ['hello', 'hi', 'hey', 'morning', 'evening'], 
+        answer: "Greetings. I am here to assist with inquiries regarding our curated collection." 
+    }
 ];
 
 function handleChatSubmit(e) {
@@ -901,7 +959,7 @@ function handleChatSubmit(e) {
         removeTypingIndicator(typingId);
         const response = getAIResponse(message);
         addChatMessage(response, 'ai');
-    }, 1000 + Math.random() * 500); // Random delay 1-1.5s
+    }, 800 + Math.random() * 400); // Slightly faster response
 }
 
 function addChatMessage(text, sender) {
@@ -953,7 +1011,8 @@ function getAIResponse(query) {
     if (bestMatch && maxScore > 0) {
         return bestMatch.answer;
     } else {
-        return "I'm not sure about that. I can tell you about the <strong>collection</strong>, <strong>pricing</strong>, <strong>specs</strong>, or <strong>returns</strong>.";
+        // Return a random fallback message to avoid repetition
+        return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
     }
 }
 </script>
