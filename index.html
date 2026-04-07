@@ -303,6 +303,8 @@
                         <button onclick="navigateTo('home')" class="nav-link active text-sm font-medium text-subtle" data-nav="home">Home</button>
                         <button onclick="navigateTo('collection')" class="nav-link text-sm font-medium text-subtle" data-nav="collection">Collection</button>
                         <button onclick="navigateTo('library')" class="nav-link text-sm font-medium text-subtle" data-nav="library">Library</button>
+                        <button onclick="navigateTo('faq')" class="nav-link text-sm font-medium text-subtle" data-nav="faq">FAQ</button>
+                        <button onclick="navigateTo('returns')" class="nav-link text-sm font-medium text-subtle" data-nav="returns">Returns</button>
                     </nav>
                     <div class="flex items-center gap-2">
                         <div class="search-wrap hidden sm:block">
@@ -317,6 +319,8 @@
                                     <button onclick="navigateTo('home');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-house text-xs text-muted w-4"></i> Home</button>
                                     <button onclick="navigateTo('collection');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-grid-2 text-xs text-muted w-4"></i> Collection</button>
                                     <button onclick="navigateTo('library');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-book-open text-xs text-muted w-4"></i> Library</button>
+                                <button onclick="navigateTo('faq');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-circle-question text-xs text-muted w-4"></i> FAQ</button>
+                                <button onclick="navigateTo('returns');toggleMobileNav();" class="w-full text-left px-5 py-3 text-sm text-subtle hover:bg-white/[0.04] hover:text-accent transition flex items-center gap-2.5"><i class="fa-solid fa-rotate-left text-xs text-muted w-4"></i> Returns</button>
                                 </div>
                             </div>
                         </div>
@@ -520,16 +524,75 @@
             <!-- ===================== FAQ VIEW ===================== -->
             <div id="view-faq" class="view-section">
                 <div class="py-8">
-                    <div class="reveal"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/10"><i class="fa-solid fa-circle-question text-accent text-sm"></i></div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">Support</p></div><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">FAQ</h1><p class="mt-2 text-subtle max-w-lg">This page is reserved for frequently asked questions relevant to the current website. No AI assistant is included.</p></div>
-                    <div class="mt-8 rounded-3xl border border-white/[0.05] bg-card/80 p-8 text-sm text-muted"><p class="leading-relaxed">Placeholder content: update this section with business FAQ answers derived from the website's offerings and policies.</p></div>
+                    <div class="reveal"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/10"><i class="fa-solid fa-circle-question text-accent text-sm"></i></div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">Support</p></div><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">FAQ</h1><p class="mt-2 text-subtle max-w-lg">Find answers for ordering, shipping, returns, and how this curated marketplace works.</p></div>
+                    <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+                        <div class="rounded-3xl border border-white/[0.05] bg-card/80 p-8 text-sm text-muted">
+                            <h2 class="font-semibold text-softWhite mb-4">Popular questions</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="font-semibold text-softWhite">What products does K.Subject-1- sell?</p>
+                                    <p class="mt-2">A curated collection of premium lifestyle products, including the automatic fold umbrella shown on the site, plus fashion, beauty, tech, and outdoor essentials.</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-softWhite">How long does delivery take?</p>
+                                    <p class="mt-2">Most orders ship within 1-2 business days and arrive within 3-6 business days for domestic locations. International shipping depends on carrier availability.</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-softWhite">What is the return policy?</p>
+                                    <p class="mt-2">Items can be returned within 7 days of delivery in their original condition. See the Returns page below for details and eligible items.</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-softWhite">Can I track my order?</p>
+                                    <p class="mt-2">Yes. Once your order ships, you will get a confirmation message with tracking details and estimated delivery times.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-3xl border border-white/[0.05] bg-card/80 p-8 text-sm text-muted">
+                            <h2 class="font-semibold text-softWhite mb-4">AI FAQ Assistant</h2>
+                            <p class="leading-relaxed mb-6">Ask about shipping, returns, product care, or general shopping guidance on this site.</p>
+                            <div class="space-y-4">
+                                <input type="text" id="faqQuestionInput" aria-label="Ask the FAQ assistant" placeholder="Ask a question like: How do returns work?" class="w-full rounded-2xl border border-white/[0.08] bg-bg/80 px-4 py-3 text-sm text-softWhite placeholder-muted outline-none focus:border-accent/40 transition" onkeydown="if(event.key==='Enter'){answerFaqQuestion();}">
+                                <button onclick="answerFaqQuestion()" class="w-full rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-bg hover:bg-accentDim transition">Get answer</button>
+                                <div id="faqAssistantAnswer" class="rounded-3xl border border-white/[0.05] bg-white/[0.03] p-5 text-sm text-softWhite min-h-[160px]">Ask a question above and the assistant will reply with the most relevant answer.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- ===================== RETURNS VIEW ===================== -->
             <div id="view-returns" class="view-section">
                 <div class="py-8">
-                    <div class="reveal"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/10"><i class="fa-solid fa-rotate-left text-accent text-sm"></i></div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">Support</p></div><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Returns</h1><p class="mt-2 text-subtle max-w-lg">This page is reserved for returns information relevant to the current website.</p></div>
-                    <div class="mt-8 rounded-3xl border border-white/[0.05] bg-card/80 p-8 text-sm text-muted"><p class="leading-relaxed">Placeholder content: update this section with return policies or instructions as needed.</p></div>
+                    <div class="reveal"><div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/10"><i class="fa-solid fa-rotate-left text-accent text-sm"></i></div><p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-accent">Support</p></div><h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">Returns</h1><p class="mt-2 text-subtle max-w-lg">Review our return policy, eligible items, and how to submit a return request for your purchase.</p></div>
+                    <div class="mt-8 rounded-3xl border border-white/[0.05] bg-card/80 p-8 text-sm text-muted space-y-8">
+                        <div>
+                            <h2 class="font-semibold text-softWhite mb-4">Return policy</h2>
+                            <p class="leading-relaxed">We accept returns within 7 days of product delivery for items in original condition, undamaged, and with all packaging intact. Refunds are processed within 3 business days after we receive and inspect the returned item.</p>
+                        </div>
+                        <div>
+                            <h2 class="font-semibold text-softWhite mb-4">How to return an item</h2>
+                            <ol class="list-decimal list-inside space-y-3 text-sm text-muted">
+                                <li>Contact our support team or use the return link in your order confirmation.</li>
+                                <li>Pack the item securely with its original packaging.</li>
+                                <li>Ship it back to the return address provided in your confirmation email.</li>
+                                <li>Once received and inspected, we will issue a refund to your original payment method.</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h2 class="font-semibold text-softWhite mb-4">What is eligible?</h2>
+                            <p class="leading-relaxed">Eligible returns include unused products that match the condition shown in the product listing. Sale items and custom orders may have different terms; contact support if you are unsure.</p>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl border border-white/[0.05] bg-bg/80 p-5">
+                                <p class="text-sm text-softWhite font-semibold mb-2">Need help?</p>
+                                <p class="text-sm text-muted">If you have questions about a return, ask the AI assistant on the FAQ page or contact support directly.</p>
+                            </div>
+                            <div class="rounded-3xl border border-white/[0.05] bg-bg/80 p-5">
+                                <p class="text-sm text-softWhite font-semibold mb-2">Return window</p>
+                                <p class="text-sm text-muted">7 days from delivery for standard returns, with quick processing once the item is received.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -626,7 +689,32 @@
 const products = [{ id:1, name:'Automatic Fold Umbrella', category:'library', categoryLabel:'Library', badge:'Best Seller', price:20000, oldPrice:25000, image:'https://m.media-amazon.com/images/I/61kNp9QnmdS._AC_UF1000,1000_QL80_.jpg', desc:'Premium automatic open/close fold umbrella with reinforced fiberglass ribs, wind-resistant canopy, and compact carrying case.' }];
 const product = products[0];
 
-// Particles
+const faqAssistantData = [
+    { keywords: ['return', 'returns', 'refund'], answer: 'You can return products within 7 days of delivery when they are in original condition. Refunds are processed within 3 business days after we receive the returned item.' },
+    { keywords: ['shipping', 'delivery', 'ship'], answer: 'Orders generally ship within 1-2 business days. Domestic delivery takes about 3-6 business days depending on your location.' },
+    { keywords: ['product', 'items', 'catalog'], answer: 'This site offers curated premium lifestyle items, including the featured automatic fold umbrella and related accessories across several categories.' },
+    { keywords: ['track', 'tracking', 'order status'], answer: 'Once your order ships, you will receive a confirmation message with tracking details and estimated delivery times.' },
+    { keywords: ['payment', 'checkout', 'pay'], answer: 'Payment is accepted through the checkout process. We support standard secure payment methods and encrypted checkout.' },
+    { keywords: ['support', 'help', 'contact'], answer: 'If you need direct help, use the contact option in the footer or ask the FAQ assistant for guidance on returns, shipping, or product questions.' },
+];
+
+function answerFaqQuestion() {
+    const input = document.getElementById('faqQuestionInput');
+    const answerBox = document.getElementById('faqAssistantAnswer');
+    const question = input?.value.trim();
+    if (!question) {
+        answerBox.textContent = 'Please enter a question for the assistant, such as "How do returns work?" or "What is the shipping policy?"';
+        return;
+    }
+    const normalized = question.toLowerCase();
+    const match = faqAssistantData.find(item => item.keywords.some(keyword => normalized.includes(keyword)));
+    if (match) {
+        answerBox.textContent = match.answer;
+    } else {
+        answerBox.textContent = 'I could not find an exact match, but this website offers curated premium lifestyle products with a 7-day return window and standard shipping support. Try asking about returns, shipping, or product details again.';
+    }
+}
+
 const canvas = document.getElementById('particlesCanvas');
 const ctx = canvas.getContext('2d');
 let particlesArr = [];
